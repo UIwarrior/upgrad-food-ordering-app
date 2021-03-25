@@ -1,0 +1,8 @@
+
+.idea/._codeStyles
+*.xml
+.idea/._inspectionProfiles
+.idea/._libraries
+FoodOrderingApp-service/target/
+FoodOrderingApp-api/target
+FoodOrderingApp-db/target
