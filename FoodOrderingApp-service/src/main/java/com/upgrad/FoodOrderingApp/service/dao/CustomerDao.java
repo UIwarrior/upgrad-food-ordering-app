@@ -16,7 +16,7 @@ public class CustomerDao {
 
     //Persisting the customer information of the created customer
     public CustomerEntity createCustomer(CustomerEntity customerEntity){
-        this.entityManager.persist(customerEntity);
+        entityManager.persist(customerEntity);
         return customerEntity;
     }
 
@@ -32,17 +32,22 @@ public class CustomerDao {
     //Creates a record in customer_auth table
     public CustomerAuthEntity createAuthToken(CustomerAuthEntity customerAuthEntity){
 
-        this.entityManager.persist(customerAuthEntity);
+        entityManager.persist(customerAuthEntity);
         return customerAuthEntity;
     }
 
     //Fetches the CustomerAuthEntity based on the access token
     public CustomerAuthEntity getCustomerAuthToken(final String accessToken){
         try{
-            return entityManager.createNamedQuery("cusomerAuthTokenByAccessToken", CustomerAuthEntity.class).setParameter("accessToken", accessToken).getSingleResult();
+            return entityManager.createNamedQuery("customerAuthTokenByAccessToken", CustomerAuthEntity.class).setParameter("accessToken", accessToken).getSingleResult();
         }catch(NoResultException nre){
             return null;
         }
     }
 
+
+    //Updates the Customer information
+    public void updateCustomer(final CustomerEntity updatedCustomerEntity){
+        entityManager.merge(updatedCustomerEntity);
+    }
 }
