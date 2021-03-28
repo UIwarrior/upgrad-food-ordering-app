@@ -2,6 +2,7 @@ package com.upgrad.FoodOrderingApp.service.businness;
 
 
 import com.upgrad.FoodOrderingApp.service.dao.CustomerDao;
+import com.upgrad.FoodOrderingApp.service.entity.CustomerAuthEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AuthenticationFailedException;
 import com.upgrad.FoodOrderingApp.service.exception.AuthorizationFailedException;
@@ -17,17 +18,21 @@ import java.time.ZonedDateTime;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
-
-
 @Service
 public class CustomerService {
-
-    PasswordCryptographyProvider passwordCryptographyProvider;
 
     @Autowired
     private CustomerDao customerDao;
 
-    //Creates a new customer after performing checks on the fields
+    @Autowired
+    private PasswordCryptographyProvider passwordCryptographyProvider;
+
+    /**
+     * For Registering a new customer
+     * @param customerEntity
+     * @return
+     * @throws SignUpRestrictedException
+     */
     @Transactional(propagation = Propagation.REQUIRED)
     public CustomerEntity saveCustomer(final CustomerEntity customerEntity) throws SignUpRestrictedException {
 
@@ -43,23 +48,22 @@ public class CustomerService {
         //If the contact number already exists in the database
         if(customerDao.getCustomerByContactNum(customerEntity.getContactNum()) != null){
             throw new SignUpRestrictedException("SGR-001","This contact number is already registered! Try other contact number.");
-        }
-        //if any other field other than last name is null
+        } //if any other field other than last name is null
         else if (customerEntity.getFirstName().isEmpty() ||
                 customerEntity.getContactNum().isEmpty() ||
                 customerEntity.getEmail().isEmpty() ||
                 customerEntity.getPassword().isEmpty()){
             throw new SignUpRestrictedException("SGR-005","Except last name all fields should be filled");
-        }
-        //If the email ID provided by the customer is not in the correct format
+        } //If the email ID provided by the customer is not in the correct format
         else if (!pattern.matcher(customerEntity.getEmail()).matches()){
             throw new SignUpRestrictedException("SGR-002", "Invalid email-id format!");
-        }
-        //If the contact number provided by the customer is not in correct format
+        } //If the contact number provided by the customer is not in correct format
         else if (!customerEntity.getContactNum().matches(contactNumRegex)) {
             throw new SignUpRestrictedException("SGR-003", "Invalid contact number!");
-        }
-        //If the password provided by the customer is weak
+        } //If the password provided by the customer is weak
+        else if (isPassWordWeak(customerEntity.getPassword())){
+            throw new SignUpRestrictedException("SGR-004","Weak password!");
+        } //Else, save the customer information in the database
         else {
             String password = customerEntity.getPassword();
             String[] encryptedText = this.passwordCryptographyProvider.encrypt(password);
@@ -68,5 +72,108 @@ public class CustomerService {
             return this.customerDao.createCustomer(customerEntity);
         }
     }
+
+    /**
+     *
+     * @param password
+     * @return
+     */
+
+    public boolean isPassWordWeak (String password) {
+        boolean weakFlag = true;
+        if(password.length()>=8){
+            //  System.out.println("Length is fine");
+            if(Pattern.matches(".*[0-9].*",password)){
+                //    System.out.println("Contains digit");
+                if(Pattern.matches(".*[A-Z].*",password)){
+                    //      System.out.println("Contains capital letter");
+                    if(Pattern.matches(".*[#@$%&*!^].*",password)){
+                        //        System.out.println("Contains special character");
+                        weakFlag=false;
+                    }
+                }
+            }
+        }
+        return weakFlag;
+    }
+
+    @Transactional(propagation= Propagation.REQUIRED)
+    public CustomerAuthEntity authenticate (final String contactNum, final String password) throws AuthenticationFailedException{
+        //Contact number should have only numbers from 0 to 9 and must be of 10 digits only
+        if(contactNum.isEmpty() || password.isEmpty()){
+            throw  new AuthenticationFailedException("ATH-003", "Incorrect format of decoded customer name and password");
+        }
+        CustomerEntity customerEntity = customerDao.getCustomerByContactNum(contactNum);
+        System.out.println("customer entity");
+        System.out.println(customerEntity);
+        if(customerEntity == null){
+            throw new AuthenticationFailedException("ATH-001","This contact number has not been registered!");
+        }
+
+        final String encryptedPassword =passwordCryptographyProvider.encrypt(password, customerEntity.getSalt());
+        //If the password is correct, save the customer login information in the database
+        if(encryptedPassword.equals(customerEntity.getPassword())){
+            JwtTokenProvider jwtToken = new JwtTokenProvider(encryptedPassword);
+            final ZonedDateTime now = ZonedDateTime.now();
+            final ZonedDateTime expiresAt = now.plusHours(8);
+            final String authToken = jwtToken.generateToken(customerEntity.getUuid(), now, expiresAt);
+            CustomerAuthEntity customerAuthToken = new CustomerAuthEntity();
+            customerAuthToken.setCustomer(customerEntity);
+            customerAuthToken.setLoginAt(now);
+            customerAuthToken.setExpiresAt(expiresAt);
+            customerAuthToken.setUuid(UUID.randomUUID().toString());
+            customerAuthToken.setAccessToken(authToken);
+            customerDao.createAuthToken(customerAuthToken);
+            customerDao.updateCustomer(customerEntity);
+            return customerAuthToken;
+        } else {
+            throw new AuthenticationFailedException("ATH-002","Invalid Credentials");
+        }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public CustomerEntity logout(final String accessToken) throws AuthorizationFailedException{
+        CustomerAuthEntity customerAuthEntity = customerDao.getCustomerAuthToken(accessToken);
+        //if access token doesnt exist in database
+        if(customerAuthEntity == null){
+            throw new AuthorizationFailedException("ATHR-001","Customer is not Logged in.");
+        }//if the access token exists in database but the customer has already logged out
+        else if(customerAuthEntity != null && customerAuthEntity.getLogoutAt() != null){
+            throw new AuthorizationFailedException("ATHR-002", "Customer is logged out. Log in again to access this endpoint.");
+        }//if the access token exists in database but the session has expired
+        else if(customerAuthEntity != null && ZonedDateTime.now().isAfter(customerAuthEntity.getExpiresAt())){
+            throw new AuthorizationFailedException("ATHR-003","Your session is expired. Log in again to access this endpoint.");
+        }//else update the Logout At in the database and return the UUID of the logged out customer
+        else{
+            final ZonedDateTime now = ZonedDateTime.now();
+            customerAuthEntity.setLogoutAt(now);
+            return customerAuthEntity.getCustomer();
+        }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public CustomerEntity getCustomer(final String accessToken)throws AuthorizationFailedException{
+
+        CustomerAuthEntity customerAuthEntity=null;
+        if(accessToken!=null){
+            customerAuthEntity = customerDao.getCustomerAuthToken(accessToken);
+        } else {
+            throw new AuthorizationFailedException("ATHR-004","Access token cannot be null");
+        }
+        //if access token doesnt exist in databases
+        if(customerAuthEntity == null){
+            throw new AuthorizationFailedException("ATHR-001","Customer is not Logged in.");
+        }//If access token exiats in database but the customer has already logged out
+        else if (customerAuthEntity != null && customerAuthEntity.getLogoutAt()!= null){
+            throw new AuthorizationFailedException("ATHR-002","Customer is logged out. Log in again to access this endpoint.");
+        }//If access token exists in database but the session has expired
+        else if (customerAuthEntity != null && ZonedDateTime.now().isAfter(customerAuthEntity.getExpiresAt())){
+            throw new AuthorizationFailedException("ATHR-003","Your session is expired. Log in again to access this endpoint.");
+        }
+        else {
+            return customerAuthEntity.getCustomer();
+        }
+    }
+
 
 }

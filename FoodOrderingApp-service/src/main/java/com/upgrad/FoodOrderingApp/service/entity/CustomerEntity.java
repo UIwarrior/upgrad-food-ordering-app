@@ -10,51 +10,85 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+/*Defining the Customer Entity based on Customer table*/
 @Entity
-@Table(name = "customer")
+@Table(
+        name = "customer"
+)
 
 /*Fetch customer based on their contact number*/
 @NamedQueries(
-        @NamedQuery(name = "customerByContactNum", query = "select c from CustomerEntity c where c.contactNum = :contactNum")
+        @NamedQuery(name= "customerByContactNum", query= "select c from CustomerEntity c where c.contactNum = :contactNum")
 )
 
 public class CustomerEntity implements Serializable {
 
+    /*The primary key of the customer table*/
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(
+            name = "ID"
+    )
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
     private long id;
 
-    @Column(name = "UUID")
+    @Column(
+            name = "UUID"
+    )
     @NotNull
-    @Size(max = 200)
+    @Size(
+            max = 200
+    )
     private String uuid;
 
-    @Column(name = "FIRSTNAME")
+    @Column(
+            name = "FIRSTNAME"
+    )
     @NotNull
-    @Size(max = 30)
+    @Size(
+            max = 30
+    )
     private String firstName;
 
-    @Column(name = "LASTNAME")
-    @Size(max = 30)
+    @Column(/*Last name can be null*/
+            name = "LASTNAME"
+    )
+    @Size(
+            max = 30
+    )
     private String lastName;
 
-    @Column(name = "EMAIL")
-    @NotNull
-    @Size(max = 50)
+    @Column(
+            name = "EMAIL"
+    )
+    @Size(
+            max = 50
+    )
     private String email;
 
-    @Column(name = "CONTACT_NUMBER")
-    @Size(max = 30)
+    @Column(
+            name = "CONTACT_NUMBER"
+    )
+    @NotNull
+    @Size(
+            max = 30
+    )
     private String contactNum;
 
-    @Column(name = "PASSWORD")
+    @Column(
+            name = "PASSWORD"
+    )
     @NotNull
     private String password;
 
-    @Column(name = "SALT")
+    @Column(
+            name = "SALT"
+    )
     @NotNull
-    @Size(max = 200)
+    @Size(
+            max = 200
+    )
     private String salt;
 
     public long getId() {
