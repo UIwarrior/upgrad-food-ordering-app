@@ -45,8 +45,6 @@ public class RestExceptionHandler extends Exception{
                 new ErrorResponse().code(exc.getCode()).message(exc.getErrorMessage()), HttpStatus.BAD_REQUEST
         );
     }
-    @ExceptionHandler(AddressNotFoundException.class)
-    public ResponseEntity<ErrorResponse> addressNotFoundException(AddressNotFoundException exc, WebRequest request){
 
     @ExceptionHandler(SaveAddressException.class)
     public ResponseEntity<ErrorResponse> saveAddressException(SaveAddressException exc, WebRequest request){
@@ -55,8 +53,6 @@ public class RestExceptionHandler extends Exception{
         );
     }
 
-    @ExceptionHandler(SaveAddressException.class)
-    public ResponseEntity<ErrorResponse> saveAddressException(SaveAddressException exc, WebRequest request){
     @ExceptionHandler(SaveOrderException.class)
     public ResponseEntity<ErrorResponse> saveOrderException(SaveOrderException exc, WebRequest request){
         return new ResponseEntity<ErrorResponse>(
@@ -84,7 +80,6 @@ public class RestExceptionHandler extends Exception{
                 new ErrorResponse().code(exc.getCode()).message(exc.getErrorMessage()), HttpStatus.BAD_REQUEST
         );
     }
-
 
     @ExceptionHandler(CouponNotFoundException.class)
     public ResponseEntity<ErrorResponse> couponNotFoundException(CouponNotFoundException exc, WebRequest request){
