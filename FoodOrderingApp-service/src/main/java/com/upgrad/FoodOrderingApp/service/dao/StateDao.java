@@ -17,7 +17,7 @@ public class StateDao {
     //Get state entity by state UUID
     public StateEntity getStateByUuid(String StateUuid){
         try{
-            return (StateEntity)this.entityManager.createNamedQuery("stateByStateUuid",StateEntity.class).setParameter("uuid", StateUuid).getSingleResult();
+            return entityManager.createNamedQuery("stateByStateUuid",StateEntity.class).setParameter("uuid", StateUuid).getSingleResult();
         }catch(NoResultException nre){
             return null;
         }
@@ -26,7 +26,7 @@ public class StateDao {
     //List all states available in DB table
     public List<StateEntity> getAllStates(){
         try{
-            return this.entityManager.createNamedQuery("allTheStates", StateEntity.class).getResultList();
+            return entityManager.createNamedQuery("allTheStates", StateEntity.class).getResultList();
         }catch(NoResultException nre){
             return null;
         }

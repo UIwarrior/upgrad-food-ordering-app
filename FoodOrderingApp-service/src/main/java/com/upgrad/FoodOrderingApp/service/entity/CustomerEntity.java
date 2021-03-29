@@ -23,8 +23,9 @@ import java.io.Serializable;
 
 public class CustomerEntity implements Serializable {
 
+    /*The primary key of the customer table*/
     @Id
-    @Column(/*The primary key of the customer table*/
+    @Column(
             name = "ID"
     )
     @GeneratedValue(
@@ -32,7 +33,7 @@ public class CustomerEntity implements Serializable {
     )
     private long id;
 
-    @Column(/*Must be unique and not null*/
+    @Column(
             name = "UUID"
     )
     @NotNull
@@ -41,10 +42,10 @@ public class CustomerEntity implements Serializable {
     )
     private String uuid;
 
-    @Column(/*First name cannot be null*/
+    @Column(
             name = "FIRSTNAME"
     )
-//    @NotNull
+    @NotNull
     @Size(
             max = 30
     )
@@ -58,7 +59,7 @@ public class CustomerEntity implements Serializable {
     )
     private String lastName;
 
-    @Column(/*Email can be null*/
+    @Column(
             name = "EMAIL"
     )
     @Size(
@@ -66,9 +67,10 @@ public class CustomerEntity implements Serializable {
     )
     private String email;
 
-    @Column(/*Contact number must be unique and not null*/
+    @Column(
             name = "CONTACT_NUMBER"
     )
+    @NotNull
     @Size(
             max = 30
     )
@@ -77,7 +79,7 @@ public class CustomerEntity implements Serializable {
     @Column(
             name = "PASSWORD"
     )
-//    @NotNull
+    @NotNull
     private String password;
 
     @Column(

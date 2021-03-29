@@ -1,6 +1,6 @@
 
 package com.upgrad.FoodOrderingApp.api.controller;
-
+/*
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerAuthEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
@@ -217,7 +217,7 @@ public class CustomerControllerTest {
                 .andExpect(jsonPath("id").value(customerId));
         verify(mockCustomerService, times(1)).logout("access-token");
     }
-*/
+
     //This test case passes when you have handled the exception of trying to logout without even logging in.
     @Test
     public void shouldNotLogoutWhenCustomerIsNotLoggedIn() throws Exception {
@@ -485,3 +485,4 @@ public class CustomerControllerTest {
     }
 
 }
+ */

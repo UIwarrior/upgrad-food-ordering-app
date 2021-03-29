@@ -1,13 +1,10 @@
 package com.upgrad.FoodOrderingApp.service.businness;
 
-// import com.sun.jndi.cosnaming.IiopUrl;
 import com.upgrad.FoodOrderingApp.service.dao.AddressDao;
 import com.upgrad.FoodOrderingApp.service.dao.CustomerAddressDao;
+import com.upgrad.FoodOrderingApp.service.dao.CustomerDao;
 import com.upgrad.FoodOrderingApp.service.dao.StateDao;
-import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
-import com.upgrad.FoodOrderingApp.service.entity.CustomerAddressEntity;
-import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
-import com.upgrad.FoodOrderingApp.service.entity.StateEntity;
+import com.upgrad.FoodOrderingApp.service.entity.*;
 import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
 import com.upgrad.FoodOrderingApp.service.exception.AuthorizationFailedException;
 import com.upgrad.FoodOrderingApp.service.exception.SaveAddressException;
@@ -16,12 +13,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 @Service
 public class AddressService {
     @Autowired
     private CustomerAddressDao customerAddressDao;
+
+    @Autowired
+    private CustomerDao customerDao;
+
 
     @Autowired
     private AddressDao addressDao;
@@ -31,7 +33,7 @@ public class AddressService {
 
     //Creating and persisting a new address added by customer
     @Transactional(propagation = Propagation.REQUIRED)
-    public AddressEntity saveAddress(final AddressEntity addressEntity,final CustomerEntity customerEntity)throws SaveAddressException{
+    public AddressEntity saveAddress(final AddressEntity addressEntity,final CustomerEntity customerEntity)throws SaveAddressException, AuthorizationFailedException{
         //pincode must have digits only from 0 to 9 and must be of 6 digits
         String pinCodeRegex ="^[0-9]{6}$";
         if(addressEntity.getFlatBuilNumber().isEmpty()
@@ -40,10 +42,11 @@ public class AddressService {
                 || addressEntity.getPinCode().isEmpty()
                 || addressEntity.getUuid().isEmpty()){
             throw new SaveAddressException("SAR-001", "No field can be empty.");
-        }//pincode must be of the proper format
+        }
+        //pincode must be of the proper format
         else if (!addressEntity.getPinCode().matches(pinCodeRegex)){
             throw new SaveAddressException("SAR-002", "Invalid pincode");
-        }//else create the address iin the database
+        }
         else {
             AddressEntity persistedAddressEntity = addressDao.createAddress(addressEntity);
             final CustomerAddressEntity customerAddressEntity = new CustomerAddressEntity();
@@ -54,8 +57,8 @@ public class AddressService {
         }
     }
 
-//Get state details by UUID
-    public StateEntity getStateByUUID(final String stateUuid) throws AddressNotFoundException, SaveAddressException{
+    //Get state details by UUID
+    public StateEntity getStateByUUID(final String stateUuid) throws AddressNotFoundException{
 
         StateEntity stateEntity =stateDao.getStateByUuid(stateUuid);
         if(stateEntity == null){
@@ -70,13 +73,20 @@ public class AddressService {
     //Validating pincode format - length is 6 and contains only numbers
     public String validatePincode(final String pinCode) throws SaveAddressException{
         boolean validPincode = true;
-        if(pinCode.length()==6){
-            if(pinCode.matches(".*[^0-9].*")) {
-               validPincode = false;
-            }
-        } else {
-            validPincode = false;
+        System.out.println("pin code");
+        System.out.println(pinCode);
+        if(pinCode == null ){
+            throw new SaveAddressException("SAR-002","Invalid pincode");
         }
+
+        else if(pinCode.length() !=6 || pinCode.matches(".*[^0-9].*")){
+                validPincode = false;
+        }
+        else {
+            validPincode = true;
+        }
+
+
         if(validPincode) {
             return pinCode;
         } else {
@@ -128,8 +138,8 @@ public class AddressService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public AddressEntity deleteAddress(AddressEntity addressEntity){
-                return addressDao.deleteAddress(addressEntity);
-            }
+        return addressDao.deleteAddress(addressEntity);
+    }
 
     //List all states available DB table
     @Transactional(propagation = Propagation.REQUIRED)

@@ -1,5 +1,9 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -15,20 +19,21 @@ import java.time.ZonedDateTime;
 
 /*Fetch customer based on the access token*/
 @NamedQueries(
-        @NamedQuery(name="cusomerAuthTokenByAccessToken", query = "select ct from CustomerAuthEntity ct where ct.accessToken = :accessToken")
+        @NamedQuery(name="customerAuthTokenByAccessToken", query = "select ct from CustomerAuthEntity ct where ct.accessToken = :accessToken")
 )
 public class CustomerAuthEntity implements Serializable {
 
+    /*The primary key of the customer_auth table*/
     @Id
-    @Column(/*The primary key of the customer_auth table*/
+    @Column(
             name = "ID"
     )
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
     private Integer id;
-
-    @Column(/*Must be unique and not null*/
+    /*Must be unique and not null*/
+    @Column(
             name = "UUID"
     )
 
@@ -42,7 +47,8 @@ public class CustomerAuthEntity implements Serializable {
     @OnDelete(
             action = OnDeleteAction.CASCADE
     )
-    @JoinColumn(/*Join with the customer table, acting as a foreign key to customer_auth table*/
+    /*Join with the customer table, acting as a foreign key to customer_auth table*/
+    @JoinColumn(
             name = "CUSTOMER_ID"
     )
     private CustomerEntity customer;
