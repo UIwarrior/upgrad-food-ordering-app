@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2187793b-e64d-48fa-93dc-77d9c32a3738" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1q0ed5lhKr92NBwJcX9MIKNeWns" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550834160886" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.upgrad.FoodOrderingApp.api.controller" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\razi.akram\Downloads\FoodOrderingAppBackend\FoodOrderingApp-api\src\test\java\com\upgrad\FoodOrderingApp\api\controller" />
+      <recent name="C:\Users\razi.akram\Downloads\FoodOrderingAppBackend\FoodOrderingApp-api\src\main\resources\endpoints" />
+      <recent name="C:\Users\razi.akram\Documents\FoodOrderingAppBackend\FoodOrderingApp-api\src\test\java\com\upgrad\FoodOrderingApp\api\controller" />
+      <recent name="C:\Users\Admin\Documents\FoodOrderingAppBackend\FoodOrderingApp-service\src\main\java\com\upgrad\FoodOrderingApp\service\exception" />
+      <recent name="C:\Users\Admin\Documents\FoodOrderingAppBackend\FoodOrderingApp-api\src\main\java\com\upgrad\FoodOrderingApp\api\config" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.upgrad.FoodOrderingApp.service.exception" />
+      <recent name="com.upgrad.FoodOrderingApp.api.config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Documents\FoodOrderingAppBackend\FoodOrderingApp-db\src\main\resources\config" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.FoodOrderingAppApiApplication">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AddressControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FoodOrderingApp-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.upgrad.FoodOrderingApp.api.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.upgrad.FoodOrderingApp.api.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.upgrad.FoodOrderingApp.api.controller.AddressControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AddressControllerTest.shouldNotSaveAddressWithNonExistingAccessToken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FoodOrderingApp-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.upgrad.FoodOrderingApp.api.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.upgrad.FoodOrderingApp.api.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.upgrad.FoodOrderingApp.api.controller.AddressControllerTest" />
+      <option name="METHOD_NAME" value="shouldNotSaveAddressWithNonExistingAccessToken" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FoodOrderingApp-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.upgrad.FoodOrderingApp.api.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.upgrad.FoodOrderingApp.api.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.upgrad.FoodOrderingApp.api.controller.CustomerControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.upgrad.FoodOrderingApp.api.controller in FoodOrderingApp-api" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FoodOrderingApp-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.upgrad.FoodOrderingApp.api.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.upgrad.FoodOrderingApp.api.controller" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FoodOrderingAppApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="FoodOrderingApp-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.upgrad.FoodOrderingApp.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.upgrad.FoodOrderingApp.api.FoodOrderingAppApiApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.FoodOrderingAppApiApplication" />
+        <item itemvalue="JUnit.com.upgrad.FoodOrderingApp.api.controller in FoodOrderingApp-api" />
+        <item itemvalue="JUnit.CustomerControllerTest" />
+        <item itemvalue="JUnit.AddressControllerTest.shouldNotSaveAddressWithNonExistingAccessToken" />
+        <item itemvalue="JUnit.AddressControllerTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2187793b-e64d-48fa-93dc-77d9c32a3738" name="Default" comment="" />
+      <created>1542000090979</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1542000090979</updated>
+      <workItem from="1542000098842" duration="1023000" />
+      <workItem from="1542001793319" duration="1447000" />
+      <workItem from="1542003603480" duration="645000" />
+      <workItem from="1542005982828" duration="35683000" />
+      <workItem from="1542171375008" duration="1930000" />
+      <workItem from="1542258014778" duration="187590000" />
+      <workItem from="1543492206993" duration="13152000" />
+      <workItem from="1545232696710" duration="1008000" />
+      <workItem from="1616221031352" duration="4984000" />
+      <workItem from="1616646468823" duration="1219000" />
+      <workItem from="1616768149273" duration="259000" />
+      <workItem from="1616839824328" duration="43572000" />
+      <workItem from="1617025852428" duration="2553000" />
+      <workItem from="1617029381206" duration="154000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="0" y="4" width="1905" height="968" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1617020241631">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="0" y="4" width="1905" height="968" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1617020241631" />
+    <state x="100" y="100" width="1720" height="880" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/47.25.1873.1055@47.25.1873.1055" timestamp="1616907911822" />
+    <state x="0" y="29" width="1857" height="945" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/48.25.1872.1055@48.25.1872.1055" timestamp="1616955949211" />
+    <state x="377" y="468" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1616904389514">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="377" y="468" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1616904389514" />
+    <state x="680" y="428" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1616904391586">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="680" y="428" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1080@0.0.1920.1080" timestamp="1616904391586" />
+    <state x="698" y="292" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616842436852">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="698" y="292" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1616842436852" />
+    <state width="1398" height="335" key="GridCell.Tab.0.bottom" timestamp="1617029271435">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="335" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1617029271435" />
+    <state width="1878" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1617020690735" />
+    <state width="1878" height="246" key="GridCell.Tab.0.bottom/46.25.1874.1055@46.25.1874.1055" timestamp="1616925089626" />
+    <state width="1878" height="246" key="GridCell.Tab.0.bottom/47.25.1873.1055@47.25.1873.1055" timestamp="1616901896044" />
+    <state width="1830" height="266" key="GridCell.Tab.0.bottom/48.25.1872.1055@48.25.1872.1055" timestamp="1616993229289" />
+    <state width="1398" height="335" key="GridCell.Tab.0.center" timestamp="1617029271433">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="335" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1617029271433" />
+    <state width="1878" height="266" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1617020690733" />
+    <state width="1878" height="246" key="GridCell.Tab.0.center/46.25.1874.1055@46.25.1874.1055" timestamp="1616925089621" />
+    <state width="1878" height="246" key="GridCell.Tab.0.center/47.25.1873.1055@47.25.1873.1055" timestamp="1616901896036" />
+    <state width="1830" height="266" key="GridCell.Tab.0.center/48.25.1872.1055@48.25.1872.1055" timestamp="1616993229284" />
+    <state width="1398" height="335" key="GridCell.Tab.0.left" timestamp="1617029271432">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="335" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1617029271432" />
+    <state width="1878" height="266" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1617020690732" />
+    <state width="1878" height="246" key="GridCell.Tab.0.left/46.25.1874.1055@46.25.1874.1055" timestamp="1616925089609" />
+    <state width="1878" height="246" key="GridCell.Tab.0.left/47.25.1873.1055@47.25.1873.1055" timestamp="1616901896029" />
+    <state width="1830" height="266" key="GridCell.Tab.0.left/48.25.1872.1055@48.25.1872.1055" timestamp="1616993229278" />
+    <state width="1398" height="335" key="GridCell.Tab.0.right" timestamp="1617029271434">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="335" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1617029271434" />
+    <state width="1878" height="266" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1617020690734" />
+    <state width="1878" height="246" key="GridCell.Tab.0.right/46.25.1874.1055@46.25.1874.1055" timestamp="1616925089625" />
+    <state width="1878" height="246" key="GridCell.Tab.0.right/47.25.1873.1055@47.25.1873.1055" timestamp="1616901896042" />
+    <state width="1830" height="266" key="GridCell.Tab.0.right/48.25.1872.1055@48.25.1872.1055" timestamp="1616993229285" />
+    <state width="1398" height="335" key="GridCell.Tab.1.bottom" timestamp="1617029271437">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="335" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1617029271437" />
+    <state width="1878" height="266" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1617017470387" />
+    <state width="1878" height="246" key="GridCell.Tab.1.bottom/46.25.1874.1055@46.25.1874.1055" timestamp="1616925089642" />
+    <state width="1830" height="401" key="GridCell.Tab.1.bottom/48.25.1872.1055@48.25.1872.1055" timestamp="1616992556707" />
+    <state width="1398" height="335" key="GridCell.Tab.1.center" timestamp="1617029271436">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="335" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1617029271436" />
+    <state width="1878" height="266" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1617017470385" />
+    <state width="1878" height="246" key="GridCell.Tab.1.center/46.25.1874.1055@46.25.1874.1055" timestamp="1616925089637" />
+    <state width="1830" height="401" key="GridCell.Tab.1.center/48.25.1872.1055@48.25.1872.1055" timestamp="1616992556706" />
+    <state width="1398" height="335" key="GridCell.Tab.1.left" timestamp="1617029271435">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="335" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1617029271435" />
+    <state width="1878" height="266" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1617017470382" />
+    <state width="1878" height="246" key="GridCell.Tab.1.left/46.25.1874.1055@46.25.1874.1055" timestamp="1616925089627" />
+    <state width="1830" height="401" key="GridCell.Tab.1.left/48.25.1872.1055@48.25.1872.1055" timestamp="1616992556706" />
+    <state width="1398" height="335" key="GridCell.Tab.1.right" timestamp="1617029271437">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="335" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1617029271437" />
+    <state width="1878" height="266" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1617017470386" />
+    <state width="1878" height="246" key="GridCell.Tab.1.right/46.25.1874.1055@46.25.1874.1055" timestamp="1616925089641" />
+    <state width="1830" height="401" key="GridCell.Tab.1.right/48.25.1872.1055@48.25.1872.1055" timestamp="1616992556707" />
+    <state x="495" y="188" key="SettingsEditor" timestamp="1616222057999">
+      <screen x="52" y="25" width="1868" height="1055" />
+    </state>
+    <state x="495" y="188" key="SettingsEditor/52.25.1868.1055@52.25.1868.1055" timestamp="1616222057999" />
+    <state x="756" y="323" key="chooseDestDirectoryDialog" timestamp="1616904348299">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="756" y="323" key="chooseDestDirectoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1616904348299" />
+    <state x="43" y="51" width="1080" height="766" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1617012409783">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="43" y="51" width="1080" height="766" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1440.900@0.0.1440.900" timestamp="1617012409783" />
+    <state x="500" y="281" width="920" height="626" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1080@0.0.1920.1080" timestamp="1616901456587" />
+    <state x="625" y="255" key="run.anything.popup" timestamp="1617017312237">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="625" y="255" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1617017312237" />
+    <state x="1077" y="278" width="670" height="676" key="search.everywhere.popup" timestamp="1617017314373">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1077" y="278" width="670" height="676" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1617017314373" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="com.upgrad.FoodOrderingApp.service.exception.SignUpRestrictedException" package="com.upgrad.FoodOrderingApp.service.exception" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Invalid</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>FoodOrderingApp-api</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
