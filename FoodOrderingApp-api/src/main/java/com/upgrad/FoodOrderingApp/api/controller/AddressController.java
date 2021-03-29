@@ -48,15 +48,12 @@ public class AddressController {
                                                            @RequestHeader("authorization") final String accessToken) throws AuthorizationFailedException, AddressNotFoundException, SaveAddressException {
             String[] bearerToken = accessToken.split("Bearer ");
                 CustomerEntity customerEntity = customerService.getCustomer(bearerToken[1]);
-                System.out.println("saveAddressRequest");
-                System.out.println(saveAddressRequest.toString());
                 String pinCode = addressService.validatePincode(saveAddressRequest.getPincode());
                 StateEntity stateEntity = addressService.getStateByUUID(saveAddressRequest.getStateUuid());
                 final AddressEntity addressEntity = new AddressEntity();
                 addressEntity.setUuid(UUID.randomUUID().toString());
                 addressEntity.setFlatBuilNo(saveAddressRequest.getFlatBuildingName());
                 addressEntity.setLocality(saveAddressRequest.getLocality());
-                System.out.println(saveAddressRequest.getCity());
                 addressEntity.setCity(saveAddressRequest.getCity());
                 addressEntity.setPincode(pinCode);
                 addressEntity.setState(stateEntity);

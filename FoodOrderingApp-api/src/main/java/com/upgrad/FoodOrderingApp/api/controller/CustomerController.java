@@ -36,7 +36,6 @@ public class CustomerController {
 
         final CustomerEntity customerEntity = new CustomerEntity();
         customerEntity.setUuid(UUID.randomUUID().toString());
-
         customerEntity.setFirstName(signupCustomerRequest.getFirstName());
         customerEntity.setLastName(signupCustomerRequest.getLastName());
         customerEntity.setEmail(signupCustomerRequest.getEmailAddress());
@@ -72,7 +71,6 @@ public class CustomerController {
         } catch (Exception e){
             throw  new AuthenticationFailedException("ATH-003", "Incorrect format of decoded customer name and password");
         }
-
         final CustomerAuthEntity customerAuthToken = customerService.authenticate(decodedArray[0], decodedArray[1]);
 
         CustomerEntity customerEntity = customerAuthToken.getCustomer();
@@ -120,21 +118,9 @@ public class CustomerController {
     public ResponseEntity<UpdatePasswordResponse> updatePassword(final UpdatePasswordRequest updatePasswordRequest,
                                                                  @RequestHeader("authorization") final String accessToken) throws UpdateCustomerException, AuthorizationFailedException{
         String[] bearerToken = accessToken.split("Bearer ");
-        System.out.println(bearerToken);
         CustomerEntity customerEntity = new CustomerEntity();
-       /* if(bearerToken.length==1){
-            throw new AuthorizationFailedException("ATHR-005","Use valid authorization format <Bearer accessToken>");
-        } else {
-            customerEntity = customerService.getCustomer(bearerToken[1]);
-            System.out.println("custome entity in bearer token call for get customer");
-            System.out.println(customerEntity);
-        }*/
 
         CustomerEntity updatedCustomer = customerService.updateCustomerPassword(updatePasswordRequest.getOldPassword(), updatePasswordRequest.getNewPassword(), customerEntity);
-
-        System.out.println("updated customer response");
-        System.out.println(updatedCustomer);
-        System.out.println(updatedCustomer.getUuid());
 
         UpdatePasswordResponse updatePasswordResponse = new UpdatePasswordResponse()
                 .id(updatedCustomer.getUuid())

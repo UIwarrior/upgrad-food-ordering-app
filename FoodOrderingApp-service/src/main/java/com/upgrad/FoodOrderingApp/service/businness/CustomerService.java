@@ -207,7 +207,6 @@ public class CustomerService {
             oldPswrd.isEmpty();
             newPswrd.isEmpty();
         } catch (Exception e){
-            System.out.println("field empty exception");
 
             throw new UpdateCustomerException("UCR-003","No field should be empty");
         }
@@ -218,19 +217,12 @@ public class CustomerService {
             throw new UpdateCustomerException("UCR-001", "Weak password!");
         }
         else {
-            System.out.println("No Exception now updating everything");
             String[] encryptPswrd = this.passwordCryptographyProvider.encrypt(newPswrd);
-            System.out.println("encrypt passwoed");
-            System.out.println(encryptPswrd);
-
             customerEntity.setSalt(encryptPswrd[0]);
             customerEntity.setPassword(encryptPswrd[1]);
-            System.out.println("customer entity");
-            System.out.println(customerEntity);
             customerDao.updateCustomer(customerEntity);
             return customerEntity;
         }
     }
-
 
 }
