@@ -1,12 +1,9 @@
-
 package com.upgrad.FoodOrderingApp.api.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.upgrad.FoodOrderingApp.api.model.CustomerOrderResponse;
 import com.upgrad.FoodOrderingApp.api.model.ItemQuantity;
 import com.upgrad.FoodOrderingApp.api.model.SaveOrderRequest;
-import com.upgrad.FoodOrderingApp.service.businness.*;
-import com.upgrad.FoodOrderingApp.service.entity.*;
 import com.upgrad.FoodOrderingApp.service.exception.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +20,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.UUID;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -69,7 +65,7 @@ public class OrderControllerTest {
                 .thenReturn(customerEntity);
 
         final SaveOrderRequest saveOrderRequest = getSaveOrderRequest();
-        when(mockPaymentService.getPaymentMethod(saveOrderRequest.getPaymentId().toString()))
+        when(mockPaymentService.getPaymentByUUID(saveOrderRequest.getPaymentId().toString()))
                 .thenReturn(new PaymentEntity());
         when(mockAddressService.getAddressByUUID(saveOrderRequest.getAddressId(), customerEntity))
                 .thenReturn(new AddressEntity());
@@ -94,7 +90,7 @@ public class OrderControllerTest {
         verify(mockCustomerService, times(1))
                 .getCustomer("database_accesstoken2");
         verify(mockPaymentService, times(1))
-                .getPaymentMethod(saveOrderRequest.getPaymentId().toString());
+                .getPaymentByUUID(saveOrderRequest.getPaymentId().toString());
         verify(mockAddressService, times(1))
                 .getAddressByUUID(saveOrderRequest.getAddressId(), customerEntity);
         verify(mockRestaurantService, times(1))
@@ -120,7 +116,7 @@ public class OrderControllerTest {
                 .andExpect(jsonPath("code").value("ATHR-001"));
 
         verify(mockCustomerService, times(1)).getCustomer("invalid_auth");
-        verify(mockPaymentService, times(0)).getPaymentMethod(anyString());
+        verify(mockPaymentService, times(0)).getPaymentByUUID(anyString());
         verify(mockAddressService, times(0)).getAddressByUUID(anyString(), any());
         verify(mockRestaurantService, times(0)).restaurantByUUID(anyString());
         verify(mockOrderService, times(0)).getCouponByCouponId(anyString());
@@ -142,7 +138,7 @@ public class OrderControllerTest {
                 .andExpect(jsonPath("code").value("ATHR-002"));
 
         verify(mockCustomerService, times(1)).getCustomer("invalid_auth");
-        verify(mockPaymentService, times(0)).getPaymentMethod(anyString());
+        verify(mockPaymentService, times(0)).getPaymentByUUID(anyString());
         verify(mockAddressService, times(0)).getAddressByUUID(anyString(), any());
         verify(mockRestaurantService, times(0)).restaurantByUUID(anyString());
         verify(mockOrderService, times(0)).getCouponByCouponId(anyString());
@@ -165,7 +161,7 @@ public class OrderControllerTest {
                 .andExpect(jsonPath("code").value("ATHR-003"));
 
         verify(mockCustomerService, times(1)).getCustomer("invalid_auth");
-        verify(mockPaymentService, times(0)).getPaymentMethod(anyString());
+        verify(mockPaymentService, times(0)).getPaymentByUUID(anyString());
         verify(mockAddressService, times(0)).getAddressByUUID(anyString(), any());
         verify(mockRestaurantService, times(0)).restaurantByUUID(anyString());
         verify(mockOrderService, times(0)).getCouponByCouponId(anyString());
@@ -181,7 +177,7 @@ public class OrderControllerTest {
                 .thenReturn(new CustomerEntity());
 
         final SaveOrderRequest saveOrderRequest = getSaveOrderRequest();
-        when(mockPaymentService.getPaymentMethod(saveOrderRequest.getPaymentId().toString()))
+        when(mockPaymentService.getPaymentByUUID(saveOrderRequest.getPaymentId().toString()))
                 .thenThrow(new PaymentMethodNotFoundException("PNF-002", "No payment method found by this id"));
 
         mockMvc
@@ -194,7 +190,7 @@ public class OrderControllerTest {
         verify(mockCustomerService, times(1))
                 .getCustomer("database_accesstoken2");
         verify(mockPaymentService, times(1))
-                .getPaymentMethod(saveOrderRequest.getPaymentId().toString());
+                .getPaymentByUUID(saveOrderRequest.getPaymentId().toString());
         verify(mockAddressService, times(0)).getAddressByUUID(anyString(), any());
         verify(mockRestaurantService, times(0)).restaurantByUUID(anyString());
         verify(mockOrderService, times(1)).getCouponByCouponId(anyString());
@@ -213,7 +209,7 @@ public class OrderControllerTest {
                 .thenReturn(customerEntity);
 
         final SaveOrderRequest saveOrderRequest = getSaveOrderRequest();
-        when(mockPaymentService.getPaymentMethod(saveOrderRequest.getPaymentId().toString()))
+        when(mockPaymentService.getPaymentByUUID(saveOrderRequest.getPaymentId().toString()))
                 .thenReturn(new PaymentEntity());
         when(mockAddressService.getAddressByUUID(saveOrderRequest.getAddressId(), customerEntity))
                 .thenThrow(new AddressNotFoundException("ANF-003", "No address by this id"));
@@ -228,7 +224,7 @@ public class OrderControllerTest {
         verify(mockCustomerService, times(1))
                 .getCustomer("database_accesstoken2");
         verify(mockPaymentService, times(1))
-                .getPaymentMethod(saveOrderRequest.getPaymentId().toString());
+                .getPaymentByUUID(saveOrderRequest.getPaymentId().toString());
         verify(mockAddressService, times(1))
                 .getAddressByUUID(saveOrderRequest.getAddressId(), customerEntity);
         verify(mockRestaurantService, times(0)).restaurantByUUID(anyString());
@@ -248,7 +244,7 @@ public class OrderControllerTest {
                 .thenReturn(customerEntity);
 
         final SaveOrderRequest saveOrderRequest = getSaveOrderRequest();
-        when(mockPaymentService.getPaymentMethod(saveOrderRequest.getPaymentId().toString()))
+        when(mockPaymentService.getPaymentByUUID(saveOrderRequest.getPaymentId().toString()))
                 .thenReturn(new PaymentEntity());
         when(mockAddressService.getAddressByUUID(saveOrderRequest.getAddressId(), customerEntity))
                 .thenThrow(new AuthorizationFailedException("ATHR-004", "You are not authorized to view/update/delete any one else's address"));
@@ -263,7 +259,7 @@ public class OrderControllerTest {
         verify(mockCustomerService, times(1))
                 .getCustomer("database_accesstoken2");
         verify(mockPaymentService, times(1))
-                .getPaymentMethod(saveOrderRequest.getPaymentId().toString());
+                .getPaymentByUUID(saveOrderRequest.getPaymentId().toString());
         verify(mockAddressService, times(1))
                 .getAddressByUUID(saveOrderRequest.getAddressId(), customerEntity);
         verify(mockRestaurantService, times(0)).restaurantByUUID(anyString());
@@ -283,7 +279,7 @@ public class OrderControllerTest {
                 .thenReturn(customerEntity);
 
         final SaveOrderRequest saveOrderRequest = getSaveOrderRequest();
-        when(mockPaymentService.getPaymentMethod(saveOrderRequest.getPaymentId().toString()))
+        when(mockPaymentService.getPaymentByUUID(saveOrderRequest.getPaymentId().toString()))
                 .thenReturn(new PaymentEntity());
         when(mockAddressService.getAddressByUUID(saveOrderRequest.getAddressId(), customerEntity))
                 .thenReturn(new AddressEntity());
@@ -300,7 +296,7 @@ public class OrderControllerTest {
         verify(mockCustomerService, times(1))
                 .getCustomer("database_accesstoken2");
         verify(mockPaymentService, times(1))
-                .getPaymentMethod(saveOrderRequest.getPaymentId().toString());
+                .getPaymentByUUID(saveOrderRequest.getPaymentId().toString());
         verify(mockAddressService, times(1))
                 .getAddressByUUID(saveOrderRequest.getAddressId(), customerEntity);
         verify(mockRestaurantService, times(1))
@@ -321,7 +317,7 @@ public class OrderControllerTest {
                 .thenReturn(customerEntity);
 
         final SaveOrderRequest saveOrderRequest = getSaveOrderRequest();
-        when(mockPaymentService.getPaymentMethod(saveOrderRequest.getPaymentId().toString()))
+        when(mockPaymentService.getPaymentByUUID(saveOrderRequest.getPaymentId().toString()))
                 .thenReturn(new PaymentEntity());
         when(mockAddressService.getAddressByUUID(saveOrderRequest.getAddressId(), customerEntity))
                 .thenReturn(new AddressEntity());
@@ -340,7 +336,7 @@ public class OrderControllerTest {
         verify(mockCustomerService, times(1))
                 .getCustomer("database_accesstoken2");
         verify(mockPaymentService, times(0))
-                .getPaymentMethod(saveOrderRequest.getPaymentId().toString());
+                .getPaymentByUUID(saveOrderRequest.getPaymentId().toString());
         verify(mockAddressService, times(0))
                 .getAddressByUUID(saveOrderRequest.getAddressId(), customerEntity);
         verify(mockRestaurantService, times(0))
@@ -363,7 +359,7 @@ public class OrderControllerTest {
                 .thenReturn(customerEntity);
 
         final OrderEntity orderEntity = getOrderEntity(customerEntity);
-        when(mockOrderService.getOrdersByCustomers(customerEntity))
+        when(mockOrderService.getOrdersByCustomers(customerId))
                 .thenReturn(Collections.singletonList(orderEntity));
 
         final String responseString = mockMvc
@@ -382,7 +378,7 @@ public class OrderControllerTest {
         assertEquals(customerOrderResponse.getOrders().get(0).getAddress().getState().getId().toString(), orderEntity.getAddress().getState().getUuid());
 
         verify(mockCustomerService, times(1)).getCustomer("database_accesstoken2");
-        verify(mockOrderService, times(1)).getOrdersByCustomers(customerEntity);
+        verify(mockOrderService, times(1)).getOrdersByCustomers(customerId);
     }
 
     //This test case passes when you have handled the exception of trying to fetch placed orders if you are not logged in.
@@ -398,7 +394,7 @@ public class OrderControllerTest {
                 .andExpect(jsonPath("code").value("ATHR-001"));
 
         verify(mockCustomerService, times(1)).getCustomer("invalid_auth");
-        verify(mockOrderService, times(0)).getOrdersByCustomers(any());
+        verify(mockOrderService, times(0)).getOrdersByCustomers(anyString());
     }
 
     //This test case passes when you have handled the exception of trying to fetch placed orders if you are already
@@ -415,7 +411,7 @@ public class OrderControllerTest {
                 .andExpect(jsonPath("code").value("ATHR-002"));
 
         verify(mockCustomerService, times(1)).getCustomer("invalid_auth");
-        verify(mockOrderService, times(0)).getOrdersByCustomers(any());
+        verify(mockOrderService, times(0)).getOrdersByCustomers(anyString());
     }
 
     //This test case passes when you have handled the exception of trying to fetch placed orders if your session is
@@ -432,7 +428,7 @@ public class OrderControllerTest {
                 .andExpect(jsonPath("code").value("ATHR-003"));
 
         verify(mockCustomerService, times(1)).getCustomer("invalid_auth");
-        verify(mockOrderService, times(0)).getOrdersByCustomers(any());
+        verify(mockOrderService, times(0)).getOrdersByCustomers(anyString());
     }
 
     // ------------------------------------------ GET /order/coupon/{coupon_name} ------------------------------------------
@@ -584,19 +580,15 @@ public class OrderControllerTest {
         final StateEntity stateEntity = new StateEntity(stateId, "someState");
 
         final String addressId = UUID.randomUUID().toString();
-        final AddressEntity addressEntity = new AddressEntity();
-        addressEntity.setFlatBuilNo("a/b/c");
-        addressEntity.setLocality("someLocality");
-        addressEntity.setCity("someCity");
-        addressEntity.setPincode("100000");
-        addressEntity.setState(stateEntity);
+        final AddressEntity addressEntity = new AddressEntity(addressId, "a/b/c",
+                "someLocality", "someCity", "100000", stateEntity);
+
         final String couponId = UUID.randomUUID().toString();
         final CouponEntity couponEntity = new CouponEntity(couponId, "someCoupon", 10);
 
         final String paymentId = UUID.randomUUID().toString();
-        final PaymentEntity paymentEntity = new PaymentEntity();
-        paymentEntity.setPaymentName("spmePayment");
-        paymentEntity.setUuid(paymentId);
+        final PaymentEntity paymentEntity = new PaymentEntity(paymentId, "spmePayment");
+
         final RestaurantEntity restaurantEntity = new RestaurantEntity();
         final String restaurantId = UUID.randomUUID().toString();
         restaurantEntity.setUuid(restaurantId);

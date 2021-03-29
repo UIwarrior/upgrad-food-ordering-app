@@ -1,4 +1,3 @@
-
 package com.upgrad.FoodOrderingApp.api.controller;
 
 import com.upgrad.FoodOrderingApp.service.businness.CustomerService;
@@ -200,7 +199,7 @@ public class CustomerControllerTest {
     // ----------------------------- POST /customer/logout --------------------------------
 
     //This test case passes when you are able to logout successfully.
- /*   @Test
+    @Test
     public void shouldLogoutForValidRequest() throws Exception {
         final CustomerAuthEntity createdCustomerAuthEntity = new CustomerAuthEntity();
         final CustomerEntity customerEntity = new CustomerEntity();
@@ -216,7 +215,7 @@ public class CustomerControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("id").value(customerId));
         verify(mockCustomerService, times(1)).logout("access-token");
-    }*/
+    }
 
     //This test case passes when you have handled the exception of trying to logout without even logging in.
     @Test
@@ -375,11 +374,11 @@ public class CustomerControllerTest {
         mockMvc
                 .perform(put("/customer/password")
                         .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
-                        .header("authorization", "Bearer eyJraWQiOiI3MjU1MmU2NS1iNDAxLTRiMmEtOTlkNi0yNjk4MmU1NzY4MDkiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJhdWQiOiIzMzM2ZjQ5ZC04MGRkLTQ1OWEtYTE1MS1jNDM1ODNjZjBmZTkiLCJpc3MiOiJodHRwczovL0Zvb2RPcmRlcmluZ0FwcC5pbyIsImV4cCI6MTU3NjMxOCwiaWF0IjoxNTc2Mjg5fQ.2b8eW0gsRhn4IAwzEuTlthshHvEPeoX8EGFA5WaWfrknSrWbWXRD5xJSvkO11ekeVgrQcx4Xrly7hsRabAoovQ")
+                        .header("authorization", "Bearer auth")
                         .content("{\"old_password\":\"oldPwd\", \"new_password\":\"newPwd\"}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("id").value(customerId));
-        verify(mockCustomerService, times(1)).getCustomer("eyJraWQiOiI3MjU1MmU2NS1iNDAxLTRiMmEtOTlkNi0yNjk4MmU1NzY4MDkiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJhdWQiOiIzMzM2ZjQ5ZC04MGRkLTQ1OWEtYTE1MS1jNDM1ODNjZjBmZTkiLCJpc3MiOiJodHRwczovL0Zvb2RPcmRlcmluZ0FwcC5pbyIsImV4cCI6MTU3NjMxOCwiaWF0IjoxNTc2Mjg5fQ.2b8eW0gsRhn4IAwzEuTlthshHvEPeoX8EGFA5WaWfrknSrWbWXRD5xJSvkO11ekeVgrQcx4Xrly7hsRabAoovQ");
+        verify(mockCustomerService, times(1)).getCustomer("auth");
         verify(mockCustomerService, times(1)).updateCustomerPassword("oldPwd", "newPwd", customerEntity);
     }
 
