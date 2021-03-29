@@ -163,16 +163,18 @@ public class CustomerService {
 
         CustomerAuthEntity customerAuthEntity= customerDao.getCustomerAuthToken(accessToken);
 
-        System.out.println("customer Service checking for auth");
+        System.out.println("customer auth entity");
         System.out.println(customerAuthEntity);
 
         //if access token doesnt exist in databases
         if(customerAuthEntity == null){
             throw new AuthorizationFailedException("ATHR-001","Customer is not Logged in.");
-        }//If access token exiats in database but the customer has already logged out
+        }
+        //If access token exiats in database but the customer has already logged out
         else if (customerAuthEntity != null && customerAuthEntity.getLogoutAt()!= null){
             throw new AuthorizationFailedException("ATHR-002","Customer is logged out. Log in again to access this endpoint.");
-        }//If access token exists in database but the session has expired
+        }
+        //If access token exists in database but the session has expired
         else if (customerAuthEntity != null && ZonedDateTime.now().isAfter(customerAuthEntity.getExpiresAt())){
             throw new AuthorizationFailedException("ATHR-003","Your session is expired. Log in again to access this endpoint.");
         }
